@@ -1,0 +1,7 @@
+# curlhdfs 
+
+    git clone http://github.com/tlpinney/curlhdfs 
+    cd curlhdfs 
+    mvn package 
+    hadoop fs -mkdir /osm-download 
+    hadoop jar target/curlhdfs-0.1.0.jar http://download.geofabrik.de/north-america/us/district-of-columbia-latest.osm.pbf /osm-download/district-of-columbia-latest.osm.pbf
