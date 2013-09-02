@@ -1,4 +1,4 @@
-package com.tlpinney.curlhdfs;
+package com.tlpinney.funnelcloud;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import org.apache.hadoop.fs.Path;
 
 
 /**
- * curlhdfs
+ * funnelcloud
  *
  */
 public class App 
