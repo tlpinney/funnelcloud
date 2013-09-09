@@ -29,7 +29,7 @@
 				<configuration>
 					<transformers>
 					  <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-				  	    <mainClass>com.tlpinney.funnelcloud.App</mainClass>
+				  	    <mainClass>com.tlpinney.funnelcloud.OsmReadWeb</mainClass>
 					  </transformer>
 					</transformers>
 				</configuration>
@@ -65,6 +65,20 @@
       <version>2.0.0-mr1-cdh4.4.0</version>
     </dependency>
     
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+	  <artifactId>protobuf-java</artifactId>
+	  <version>2.5.0</version>
+    </dependency>
+
+<!--     
+    <dependency>
+	  <groupId>org.openstreetmap.osmosis</groupId>
+	  <artifactId>osmosis-core</artifactId>
+	  <version>0.43-RELEASE</version>
+	</dependency>
+-->
+
   </dependencies>
   
   
