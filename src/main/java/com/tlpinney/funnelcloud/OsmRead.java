@@ -128,15 +128,15 @@ public class OsmRead {
             //in.read(buf);
             bhsize = ByteBuffer.wrap(buf).getInt();
         
-            p(bhsize);
+            //p(bhsize);
         
             blobbuf = new byte[bhsize];
             in.read(blobbuf);
         
             bh = BlobHeader.parseFrom(blobbuf);
         
-            p(bh.getType());
-            p(bh.getDatasize());
+            //p(bh.getType());
+            //p(bh.getDatasize());
             
             byte[] data = new byte[bh.getDatasize()];
             
