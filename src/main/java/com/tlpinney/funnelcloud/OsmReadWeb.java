@@ -71,7 +71,7 @@ public class OsmReadWeb {
         writer = SequenceFile.createWriter(fs, conf, path, 
                 key.getClass(), value.getClass(), CompressionType.NONE);
               
-        p("Read in next OSMData block");
+        p("Read in next OSMData blobs");
         
         buf = new byte[4];
         int count = 0;
@@ -81,38 +81,42 @@ public class OsmReadWeb {
         //in.read(buf);
         while ((bytesRead = in.read(buf)) > -1) {   
         
+        	int bytesReadTotal = 0;
+        	
+        	
+        	
         	if (bytesRead < 4) {
-        		// does repeated reads until it gets all the data?
-        		bytesRead = in.read(buf, bytesRead, 4-bytesRead);
+        		while (bytesRead < 4) {
+        			bytesRead = bytesRead + in.read(buf, bytesRead, 4-bytesRead);
+        		}
         	}
         	
-        	p(bytesRead);
+        	//p(bytesRead);
         	
         	
             bhsize = ByteBuffer.wrap(buf).getInt();
-            p(bhsize);
+            //p(bhsize);
             blobbuf = new byte[bhsize];
-            in.read(blobbuf);        
+            
+            bytesReadTotal = 0;
+            while (bytesReadTotal < bhsize) {
+            	bytesReadTotal = bytesReadTotal + in.read(blobbuf, bytesReadTotal, bhsize - bytesReadTotal);   
+            }
+            
             bh = BlobHeader.parseFrom(blobbuf);      
-            p("data type: " + bh.getType());
-            p("data size: " + bh.getDatasize());
+            //p("data type: " + bh.getType());
+            //p("data size: " + bh.getDatasize());
          
             int dsize = bh.getDatasize();
             byte[] data = new byte[dsize]; 
 
-            int bytesReadTotal = 0;
-            //bytesRead = 0;
+            //p("dsize: " + dsize);
+            bytesReadTotal = 0;
             while (bytesReadTotal < dsize) {
-            	//p(bytesReadTotal);
             	bytesReadTotal = bytesReadTotal + in.read(data, bytesReadTotal, dsize - bytesReadTotal);
+            	//p("bytesReadTotal: " + bytesReadTotal);
             };
             
-            //p("bytesReadTotal: " + bytesReadTotal);
-            
-            
-            //blob = Blob.parseFrom(data);
-            // read blob into a bytearray and write and ignore it 
-            //p("serialized size: " + blob.getSerializedSize());
             
             
             // write out pbf in a sequence file (no compression)
@@ -123,10 +127,13 @@ public class OsmReadWeb {
             
             //p(in.available());
             //p(Hex.encodeHexString(data));
-   
-
-            
+              
           count += 1;
+          
+          if (count % 1000 == 0 ) {
+        	  p("Processed Blob: " + count);
+          }
+          
         }
          
         writer.close();
