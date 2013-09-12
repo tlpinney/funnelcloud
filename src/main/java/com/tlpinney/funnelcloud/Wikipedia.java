@@ -85,43 +85,57 @@ public class Wikipedia {
 	         
 	         // read the first part of the array 
 	         
-	         long byteloc = 0; //= Integer.parseInt(aloc.pop());
-	         int bytelen; //= byteloc; 
+	         long byteloc = Integer.parseInt(aloc.remove(0));
+	         Long tmp2 = byteloc;
+	         int bytelen = tmp2.intValue(); 
 	         long tmp = 0;
-	         Long tmp2;
+	        
 	         int count = 0;
-	         long bytesRead = 0;
-	         byte[] buffer;
+	         int bytesRead = 0;
+	         byte[] buffer = new byte[bytelen]; 
 	       
 	        
-	         while (true) {
+	         while ((bytesRead = reader.read(buffer)) > -1) {
 	        	 
-	        	 tmp = byteloc;
-	        	 byteloc = Long.parseLong(aloc.remove(0));
-	        	 p("byteloc: " + byteloc);
-	        	 p("tmp: " + tmp);
-	        	 tmp2 = byteloc - tmp;
-	        	 p("tmp2: " + tmp2);
-	        	 bytelen = tmp2.intValue();
+	        	 //p("bytesRead: " + bytesRead);
+	        	 //System.exit(0);
 	        	 
-	        	 p("bytelen: " + bytelen);
+	        	if (bytesRead < bytelen) {
+	        		while (bytesRead < bytelen) {
+	        			//p("bytesRead in loop: " + bytesRead);
+	        			bytesRead = bytesRead + reader.read(buffer, bytesRead, bytelen-bytesRead);
+	            	}
+	            }
 	        	 
-	        	 buffer = new byte[bytelen];
-	        	 
-	        	 if ((readFully(buffer, reader, bytelen)) < 0) {
-	        		break; 
-	        	 }
-	        	 
-	        	 // process the stuff 
-	        	 
-	             BytesWritable bw = new BytesWritable(buffer);           
-	             key.set(count);
-	             value.set(bw);
-	             writer.append(key, value);
+	            BytesWritable bw = new BytesWritable(buffer);           
+	            key.set(count);
+	            value.set(bw);
+	            writer.append(key, value);
 	        	         	 
+	        
+	            if (aloc.size() < 1) {
+	            	// we are at the end
+	            	break;
+	            }
+	            
+	        	tmp = byteloc;
+	        	byteloc = Long.parseLong(aloc.remove(0));
+	        	//p("byteloc: " + byteloc);
+	        	//p("tmp: " + tmp);
+	        	tmp2 = byteloc - tmp;
+	        	//p("tmp2: " + tmp2);
+	        	bytelen = tmp2.intValue();
 	        	 
+	        	//p("bytelen: " + bytelen);
+	        	 
+	        	buffer = new byte[bytelen];
+	        	      	 
 		        count += 1;    
 		       
+		        if (count % 1000 == 0 ) {
+		        	  p("Processed Blob: " + count);
+		          }
+		        
 		        }
 	        
 	        
