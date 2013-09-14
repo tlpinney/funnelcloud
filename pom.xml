@@ -29,7 +29,7 @@
 				<configuration>
 					<transformers>
 					  <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-				  	    <mainClass>com.tlpinney.funnelcloud.Wikipedia</mainClass>
+				  	    <mainClass>com.tlpinney.funnelcloud.Main</mainClass>
 					  </transformer>
 					</transformers>
 				</configuration>
@@ -70,6 +70,16 @@
 	  <artifactId>protobuf-java</artifactId>
 	  <version>2.5.0</version>
     </dependency>
+    
+ <!-- 
+    <dependency>
+      <groupId>net.sourceforge.argparse4j</groupId>
+      <artifactId>argparse4j</artifactId>
+      <version>0.4.1</version>
+    </dependency>
+ -->
+ 
+    
 
 <!--     
     <dependency>

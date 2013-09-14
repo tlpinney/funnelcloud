@@ -22,7 +22,7 @@ import org.apache.hadoop.mapred.SequenceFileAsBinaryInputFormat;
  * funnelcloud
  *
  */
-public class App 
+public class Beam 
 {
     
     public static void main( String[] args ) throws IOException
