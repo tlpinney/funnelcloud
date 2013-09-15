@@ -45,7 +45,7 @@ Include full path to key file when using scp or ssh
     ec2-describe-instances 
     
     # copy seed script and media to server
-    scp -i XXXXXXXX.pem -r media seed.sh ubuntu@XXXXXXXX
+    scp -i XXXXXXXX.pem -r media seed.sh ubuntu@XXXXXXXX:
 
     # ssh to the server 
     ssh -i XXXXXXXX.pem ubuntu@XXXXXXXX
@@ -53,12 +53,18 @@ Include full path to key file when using scp or ssh
     # run the seed script
     sudo sh seed.sh 
 
+    # run the geonames script to download and ingest geonames 
+     
+
 When this completes you should have a fully functional analytics system for GeoNames data.
  
 ## Analytics 
 
-   Simple things 
-
+    impala-shell
+    connect localhost
+    
+     
+   
 
 
    Please do a pull request to add more. 

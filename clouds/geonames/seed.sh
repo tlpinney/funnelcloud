@@ -71,7 +71,7 @@ sudo -u hdfs hadoop fs -mkdir /tmp/mapred/system
 sudo -u hdfs hadoop fs -chown mapred:hadoop /tmp/mapred/system
 
 # start hadoop mapreduce tracker 
-sudo /etc/init.d/hadoop-0.20-mapreduce-jobtracker start
+# sudo /etc/init.d/hadoop-0.20-mapreduce-jobtracker start
 
 # create a home directory for the mapreduce user 
 sudo -u hdfs hadoop fs -mkdir  /user/ubuntu
