@@ -14,7 +14,7 @@ CREATE EXTERNAL TABLE geonames_raw
    admin2_code STRING,
    admin3_code STRING,
    admin4_code STRING,
-   population INT,
+   population BIGINT,
    elevation INT,
    dem STRING,
    timezone STRING,
