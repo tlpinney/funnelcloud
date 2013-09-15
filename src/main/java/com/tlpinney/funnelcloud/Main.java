@@ -9,12 +9,7 @@ import java.util.zip.DataFormatException;
 public class Main {
 
 	public static void main(String[] args) throws IOException, DataFormatException {
-		
-		 
-		
-		 //args = new String[]{ "beam" };
-			
-		 // need to implement something like argparse4j
+		 // TODO need to implement something like argparse4j
 		 // now going with simple if statements
 		 
 		 if (Arrays.asList(args).contains("-h")) {
@@ -34,18 +29,15 @@ public class Main {
 				 // Call Beam 
 				 String [] bargs = { args[1], args[2] };		 
 				 Beam.main(bargs);
-				 
 			 } else {
 				 p("Invalid Options");
 				 beam_usage();
 			 }
 		 } else if (Arrays.asList(args).contains("ingest")) {
-			 
-			if (args.length == 1) {
+			 if (args.length == 1) {
 				ingest_usage();
-			}
-			 // check for subcommands 
-			 		 
+			 }
+			 // check for subcommands 		 
 			 if (Arrays.asList(args).contains("osm")) {
 				 if (args.length == 2) {
 					 osm_usage();
@@ -66,24 +58,27 @@ public class Main {
 				 } else {
 					 p("Invalid Options");
 					 wikipedia_usage();
-					 
 				 }
-			 } else {
+				 
+			 } else if (Arrays.asList(args).contains("geonames")) {
+		 		if (args.length == 2) {
+		 			geonames_usage();	
+		 		} else if (args.length == 4) {
+		 			String [] wargs = {args[2], args[3]};
+		 			GeoNames.main(wargs);
+		 		} else {
+		 			p("Invalid Options");
+		 			geonames_usage();
+		 		}
+		 	} else {
 				p("Invalid Options");
 				ingest_usage(); 
-				 
-			 }
-			 
+			} 
 			 
 		 } else {
 			 p("Invalid Options");
 			 usage();
 		 }
-		 
-		
-		
-		
-		
 	}
 	
 	public static void usage() {
@@ -154,8 +149,22 @@ public class Main {
 
 	}
 	
+	public static void geonames_usage() {
+		p("Usage: fcl ingest geonames weburl hdfsdest");
+		p("");
+		p("    -v, --verbose                    NOT IMPLEMENTED");
+		p("");
+
+		
+		System.exit(0);
+		
+
+	}
+	
+	
 	public static void version() {
-		p("FunnelCloud version 0.1.1");
+		// TODO read from pom.xml
+		p("FunnelCloud version 0.1.3");
 		System.exit(0);
 	}
 	
