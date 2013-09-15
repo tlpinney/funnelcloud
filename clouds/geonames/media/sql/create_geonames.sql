@@ -1,4 +1,6 @@
 
+DROP TABLE IF EXISTS geonames_raw;
+
 CREATE EXTERNAL TABLE geonames_raw
 (
    geonameid INT,
@@ -8,8 +10,9 @@ CREATE EXTERNAL TABLE geonames_raw
    latitude FLOAT,
    longitude FLOAT,
    feature_class STRING,
+   feature_code STRING,
    country_code STRING,
-   cc2 STRING, 
+   cc2 STRING,
    admin1_code STRING,
    admin2_code STRING,
    admin3_code STRING,
@@ -18,13 +21,16 @@ CREATE EXTERNAL TABLE geonames_raw
    elevation INT,
    dem STRING,
    timezone STRING,
-   modification_date TIMESTAMP
+   modification_date TIMESTAMP 
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 LOCATION '/user/ubuntu/geonames_tsv';
 
-set PARQUET_COMPRESSION_CODEC=snappy;
-create table geonames LIKE geonames_raw STORED AS PARQUETFILE;
+SET PARQUET_COMPRESSION_CODEC=snappy;
 
-insert overwrite table geonames  select * from geonames_raw;
+DROP TABLE IF EXISTS geonames;
+
+CREATE table geonames LIKE geonames_raw STORED AS PARQUETFILE;
+
+INSERT OVERWRITE TABLE geonames SELECT * FROM geonames_raw;
 
