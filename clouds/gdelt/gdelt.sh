@@ -10,7 +10,7 @@ for i in `cat /home/ubuntu/backfiles.txt`; do
   tail -n +2 $i > $i.tmp 
   mv $i.tmp $i 
   hdfs dfs -put $i gdelt_historical_tsv 
-; done 
+done 
 
 hdfs dfs -mkdir gdelt_dailyupdates_tsv 
 for i in `cat /home/ubuntu/dailyupdates.txt`; do 
@@ -19,7 +19,7 @@ for i in `cat /home/ubuntu/dailyupdates.txt`; do
   tail -n +2 $i > $i.tmp 
   mv $i.tmp $i 
   hdfs dfs -put $i gdelt_dailyupdates_tsv 
-
+done
 
 
 #hdfs dfs -mkdir geonames_tsv
