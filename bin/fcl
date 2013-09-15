@@ -1,11 +1,13 @@
 #!/bin/sh 
 
-FCL_HOME="/usr/local/funnelcloud-0.1.1"
+FCL_HOME="/usr/local/funnelcloud-0.1.2"
 
 
-# hack to work with github directory 
+# hack to work with git directory 
+# hadoop jar /home/vagrant/funnelcloud/target/funnelcloud-0.1.2.jar $@
 
-hadoop jar /home/vagrant/funnelcloud/target/funnelcloud-0.1.0.jar $@
+hadoop jar $FCL_HOME/lib/funnelcloud-0.1.2.jar $@
+
 
 
 

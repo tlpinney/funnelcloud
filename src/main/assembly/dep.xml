@@ -1,0 +1,29 @@
+<assembly>
+    <id>bin</id>
+    <formats>
+      <format>tar.gz</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>README*</include>
+        <include>LICENSE*</include>
+        <include>NOTICE*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>bin</directory>
+      <outputDirectory>bin</outputDirectory>
+      <includes>
+        <include>fcl</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target</directory>
+      <outputDirectory>lib</outputDirectory>
+      <includes>
+        <include>funnelcloud*.jar</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</assembly>

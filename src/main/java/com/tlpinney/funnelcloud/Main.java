@@ -2,19 +2,20 @@ package com.tlpinney.funnelcloud;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.zip.DataFormatException;
 
 
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, DataFormatException {
 		
 		 
 		
 		 //args = new String[]{ "beam" };
 			
 		 // need to implement something like argparse4j
-		 // now going with a simple if statement 
+		 // now going with simple if statements
 		 
 		 if (Arrays.asList(args).contains("-h")) {
 			 usage();
@@ -38,9 +39,44 @@ public class Main {
 				 p("Invalid Options");
 				 beam_usage();
 			 }
+		 } else if (Arrays.asList(args).contains("ingest")) {
+			 
+			if (args.length == 1) {
+				ingest_usage();
+			}
+			 // check for subcommands 
+			 		 
+			 if (Arrays.asList(args).contains("osm")) {
+				 if (args.length == 2) {
+					 osm_usage();
+				 } else if (args.length == 4) {
+					 String [] oargs = { args[2], args[3] };
+					 OsmReadWeb.main(oargs);
+				 } else {
+					 p("Invalid Options");
+					 osm_usage();
+				 }
+			 } else if (Arrays.asList(args).contains("wikipedia")) {
+				 if (args.length == 2) {
+					 wikipedia_usage();
+				 } else if (args.length == 5) {
+					 // make sure index is included 
+					 String [] wargs = {args[2], args[3], args[4] };
+					 Wikipedia.main(wargs);
+				 } else {
+					 p("Invalid Options");
+					 wikipedia_usage();
+					 
+				 }
+			 } else {
+				p("Invalid Options");
+				ingest_usage(); 
+				 
+			 }
+			 
 			 
 		 } else {
-			 p("Unknown options");
+			 p("Invalid Options");
 			 usage();
 		 }
 		 
@@ -58,6 +94,9 @@ public class Main {
 		p("");
 		p("Available subcommands, for details fcl command --help");
 		p("    beam");
+		p("    ingest");
+		
+		
 		
 		System.exit(0);
 		
@@ -68,6 +107,44 @@ public class Main {
 		p("Usage: fcl beam weburl hdfsdest");
 		p("");
 		p("    -r, --recursive                  NOT IMPLEMENTED");
+		p("    -v, --verbose                    NOT IMPLEMENTED");
+		p("");
+
+		
+		System.exit(0);
+		
+
+	}
+	
+	public static void ingest_usage() {
+		p("Usage: fcl ingest command [<args>]");
+		p("");
+		p("Available subcommands, for details fcl command --help");
+		p("    osm");
+		p("    wikipedia");
+		
+		
+		
+		System.exit(0);
+		
+
+	}
+	
+	public static void osm_usage() {
+		p("Usage: fcl ingest osm weburl hdfsdest");
+		p("");
+		p("    -v, --verbose                    NOT IMPLEMENTED");
+		p("");
+
+		
+		System.exit(0);
+		
+
+	}
+	
+	public static void wikipedia_usage() {
+		p("Usage: fcl ingest wikipedia enwiki-index.txt weburl hdfsdest");
+		p("");
 		p("    -v, --verbose                    NOT IMPLEMENTED");
 		p("");
 

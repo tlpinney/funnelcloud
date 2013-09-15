@@ -4,7 +4,7 @@
 
   <groupId>com.tlpinney</groupId>
   <artifactId>funnelcloud</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.2</version>
   <packaging>jar</packaging>
 
   <name>funnelcloud</name>
@@ -36,6 +36,13 @@
 			</execution>
 		</executions>
   	</plugin>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <version>2.4</version>
+      <configuration>
+        <descriptor>src/main/assembly/dep.xml</descriptor>
+      </configuration>
+    </plugin>
   </plugins>
 </build>
 
@@ -77,11 +84,6 @@
       <artifactId>argparse4j</artifactId>
       <version>0.4.1</version>
     </dependency>
- -->
- 
-    
-
-<!--     
     <dependency>
 	  <groupId>org.openstreetmap.osmosis</groupId>
 	  <artifactId>osmosis-core</artifactId>
@@ -90,6 +92,8 @@
 -->
 
   </dependencies>
+  
+  
   
   
   <repositories>
