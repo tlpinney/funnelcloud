@@ -75,8 +75,55 @@ Examples of very simple analytics.
 
     impala-shell -i localhost
 
+### Number of Records Per Year
 
-   Please do a pull request to add more. 
+    [localhost:21000] > select year, count(year) from gdelt_historical group by year order by count(year) desc limit 10;
+    Query: select year, count(year) from gdelt_historical group by year order by count(year) desc limit 10
+    Query finished, fetching results ...
+    +------+-------------+
+    | year | count(year) |
+    +------+-------------+
+    | 2012 | 34304129    |
+    | 2011 | 31501556    |
+    | 2009 | 23464598    |
+    | 2010 | 22502301    |
+    | 2008 | 14331021    |
+    | 2007 | 11243098    |
+    | 2013 | 7956409     |
+    | 2006 | 6345731     |
+    | 2003 | 5526160     |
+    | 2001 | 4995943     |
+    +------+-------------+
+
+    Returned 10 row(s) in 7.29s
+
+
+### Return top 10 Actor1 names 
+
+    [localhost:21000] > select actor1name, count(actor1name) from gdelt_historical group by actor1name order by count(actor1name) desc limit 10;
+    Query: select actor1name, count(actor1name) from gdelt_historical group by actor1name order by count(actor1name) desc limit 10
+    Query finished, fetching results ...
+    +----------------+-------------------+
+    | actor1name     | count(actor1name) |
+    +----------------+-------------------+
+    |                | 19643942          |
+    | UNITED STATES  | 15251986          |
+    | GOVERNMENT     | 3215978           |
+    | POLICE         | 3206002           |
+    | PRESIDENT      | 2882221           |
+    | RUSSIA         | 2591392           |
+    | CHINA          | 2355003           |
+    | ISRAEL         | 2269041           |
+    | UNITED KINGDOM | 1896722           |
+    | PAKISTAN       | 1885967           |
+    +----------------+-------------------+
+    Returned 10 row(s) in 11.32s
+
+    
+    Looks like most of this are empty for some reason....
+
+
+Please do a pull request to add more. 
 
 
 
