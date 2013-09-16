@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS gdelt_historical_raw;
 CREATE EXTERNAL TABLE gdelt_historical_raw
 (
   globaleventid BIGINT, 
-  sqldate TIMESTAMP, 
+  sqldate STRING, 
   MonthYear STRING, 
   Year STRING, 
   FractionDate DOUBLE, 
@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS gdelt_dailyupdates_raw;
 CREATE EXTERNAL TABLE gdelt_dailyupdates_raw
 (
   globaleventid BIGINT, 
-  sqldate TIMESTAMP, 
+  sqldate STRING, 
   MonthYear STRING, 
   Year STRING, 
   FractionDate DOUBLE, 

@@ -21,10 +21,8 @@ for i in `cat /home/ubuntu/dailyupdates.txt`; do
   hdfs dfs -put $i gdelt_dailyupdates_tsv 
 done
 
-
-#hdfs dfs -mkdir geonames_tsv
-#hdfs dfs -put allCountries.txt geonames_tsv 
-#impala-shell -i localhost -f /vagrant/media/sql/create_geonames.sql 
+echo "Be Patient, will take a while to load" 
+impala-shell -i localhost -f /vagrant/media/sql/create_gdelt.sql 
 
 
 
