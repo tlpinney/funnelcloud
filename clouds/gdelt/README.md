@@ -120,7 +120,7 @@ Examples of very simple analytics.
     Returned 10 row(s) in 11.32s
 
     
-    Looks like most of this are empty for some reason....
+    Looks like most of these are empty for some reason....
 
 
 Please do a pull request to add more. 
