@@ -1,6 +1,6 @@
 # GDELT FunnelCloud 
 
-Create a fast import of GeoNames into a Impala/Parquet format to do analytics.
+Create a fast import of GDELT into a Impala/Parquet format to do analytics.
 Blow away instance when done. 
 
 
@@ -50,7 +50,7 @@ Include full path to key file for FCL_KEYPATH
     # copy seed script and media to server
     # todo, figure out how to cache the key to known_hosts from the amazon API
 
-    scp -i $FCL_KEYPATH -r media seed.sh geonames.sh ubuntu@$FCL_HOST:
+    scp -i $FCL_KEYPATH -r media seed.sh gdelt.sh dailyupdates.txt backfiles.txt ubuntu@$FCL_HOST:
 
     # ssh to the server 
     ssh -i $FCL_KEYPATH ubuntu@$FCL_HOST
