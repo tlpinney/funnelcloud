@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<configuration>
+<property>
+<name>hive.metastore.local</name>
+<value>false</value>
+</property>
+<property>
+<name>hive.metastore.uris</name>
+<value>thrift://metastore_server_host:9083</value>
+</property>
+<property>
+<name>hive.metastore.client.socket.timeout</name>
+<value>3600</value>
+<description>MetaStore Client socket timeout in seconds</description>
+</property>
+</configuration>

@@ -1,0 +1,3 @@
+deb [arch=amd64] http://archive.cloudera.com/impala/ubuntu/precise/amd64/impala precise-impala1 contrib
+deb-src http://archive.cloudera.com/impala/ubuntu/precise/amd64/impala precise-impala1 contrib
+
