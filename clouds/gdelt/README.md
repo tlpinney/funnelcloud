@@ -25,6 +25,7 @@ Set up environment variables, fill in values of XXXXXXX
     export JAVA_HOME=XXXXXXXX
     export EC2_URL=https://ec2.us-east-1.amazonaws.com
     export EC2_HOME=/XXXXXXXXX/ec2-api-tools-1.6.9.0
+    export PATH=$PATH:EC2_HOME/bin
 
 
 Instantiate the node to run Impala, data is relatively small and it works well with
@@ -63,6 +64,8 @@ Include full path to key file for FCL_KEYPATH
     ssh -i $FCL_KEYPATH ubuntu@$FCL_HOST
 
     # run the geonames script to download and ingest geonames 
+    # this may take a long time to download so use screen or tmux
+    screen 
     sh gdelt.sh 
      
 
