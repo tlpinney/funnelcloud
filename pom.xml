@@ -84,12 +84,39 @@
       <artifactId>argparse4j</artifactId>
       <version>0.4.1</version>
     </dependency>
+-->
+    
     <dependency>
 	  <groupId>org.openstreetmap.osmosis</groupId>
 	  <artifactId>osmosis-core</artifactId>
 	  <version>0.43-RELEASE</version>
 	</dependency>
--->
+	
+	<dependency>
+      <groupId>org.openstreetmap.osmosis</groupId>
+      <artifactId>osmosis-pbf</artifactId>
+      <version>0.43-RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>parquet-common</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>parquet-encoding</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>parquet-column</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>parquet-hadoop</artifactId>
+      <version>1.0.0</version>
+    </dependency>
 
   </dependencies>
   

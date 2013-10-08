@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
-import crosby.binary.Fileformat.BlobHeader;
-import crosby.binary.Fileformat.Blob;
-import crosby.binary.Osmformat.HeaderBlock;
+
 
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 //import org.openstreetmap.osmosis.
+
+
 
 
 
@@ -28,6 +28,8 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.SequenceFile.CompressionType;
+import org.openstreetmap.osmosis.osmbinary.Fileformat.Blob;
+import org.openstreetmap.osmosis.osmbinary.Fileformat.BlobHeader;
 
 
 

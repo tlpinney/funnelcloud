@@ -8,7 +8,7 @@ import java.util.zip.DataFormatException;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException, DataFormatException {
+	public static void main(String[] args) throws Exception {
 		 // TODO need to implement something like argparse4j
 		 // now going with simple if statements
 		 
@@ -20,6 +20,10 @@ public class Main {
 			 version();
 		 } else if (Arrays.asList(args).contains("-v") ) {
 			 version();
+		 } else if (Arrays.asList(args).contains("test") ) {
+			 OSMProcessLocal.main(args);
+		 } else if (Arrays.asList(args).contains("mr") ) {
+			 OSMMRTest.main(args);
 		 } else if (Arrays.asList(args).contains("beam") ) {
 			 // check to see if help exists, if so print out the beam usage
 			 // if no args exist, print out help
@@ -151,6 +155,31 @@ public class Main {
 	
 	public static void geonames_usage() {
 		p("Usage: fcl ingest geonames weburl hdfsdest");
+		p("");
+		p("    -v, --verbose                    NOT IMPLEMENTED");
+		p("");
+
+		
+		System.exit(0);
+		
+
+	}
+	
+	public static void mr_usage() {
+		p("Usage: fcl mr input output");
+		p("");
+		p("    -v, --verbose                    NOT IMPLEMENTED");
+		p("");
+
+		
+		System.exit(0);
+		
+
+	}
+	
+	
+	public static void test_usage() {
+		p("Usage: fcl test");
 		p("");
 		p("    -v, --verbose                    NOT IMPLEMENTED");
 		p("");

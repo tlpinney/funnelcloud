@@ -25,7 +25,7 @@ import org.apache.commons.codec.binary.Hex;
 
 
 
-public class OsmReadWeb {
+public class OsmReadWebOne {
 
 	public static void main(String[] args) throws IOException, DataFormatException {
 		Configuration conf = new Configuration();
@@ -119,23 +119,24 @@ public class OsmReadWeb {
             
             
             // write out pbf in a sequence file (no compression)
-            //p("data length: " + data.length);
+        
             BytesWritable bw = new BytesWritable(data); 
             BytesWritable bwkey = new BytesWritable(blobbuf); 
-           
-            //p("byteswritable length:" + bw.getLength());
-            //p(Hex.encodeHexString(data));
-            //p("--------------------------------------------------------");
-            //p(Hex.encodeHexString(bw.getBytes()));
+            p("value data length: " + data.length);
+            p("value byteswritable length:" + bw.getLength());
+            p("key data length: " + blobbuf.length);
+            p("key byteswritable length: "  + bwkey.getLength());
             
-           // System.exit(0);
+            
+            p(Hex.encodeHexString(blobbuf));
+            p("------------------------------------------------");
+            p(Hex.encodeHexString(data));
+            
             
             key.set(bwkey);
             value.set(bw);
             writer.append(key, value);
             
-            //p(in.available());
-            //p(Hex.encodeHexString(data));
               
           count += 1;
           
@@ -143,6 +144,7 @@ public class OsmReadWeb {
         	  p("Processed Blob: " + count);
           }
           
+          break;
         }
          
         writer.close();
