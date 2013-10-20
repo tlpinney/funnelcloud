@@ -85,7 +85,16 @@ cp /vagrant/media/impala/hive-site.xml /etc/impala
 service impala-state-store start
 service impala-server start
 
+mkdir -p /mnt/data/1/mapred/local
+mkdir -p /mnt/data/2/mapred/local
+mkdir -p /mnt/data/3/mapred/local
+mkdir -p /mnt/data/4/mapred/local
 
+chown mapred /mnt/data/1/mapred/local
+chown mapred /mnt/data/2/mapred/local
+chown mapred /mnt/data/3/mapred/local
+chown mapred /mnt/data/4/mapred/local
 
+apt-get install hadoop-0.20-mapreduce-tasktracker -y
 
 exit 0

@@ -31,8 +31,19 @@ Set up environment variables, fill in values of XXXXXXX
 Instantiate the node to run Impala, data is relatively small and it works well with
 one node.
 
+    # Create a placement group for the cluster
 
-    ec2-request-spot-instances ami-d0f89fb9 -t m2.4xlarge -p '0.20' -n 1 -r 'one-time' -k XXXXXXXXX
+    ec2-describe-placement-groups
+    ec2-create-placement-group skynet -s cluster
+
+    # Create a security group for it 
+  
+
+    # CC2, CR1, CG1, HI1, and HS1 instances support cluster networking
+
+
+    ec2-request-spot-instances ami-d0f89fb9 -t m2.4xlarge -p '0.51' -n 20 -r 'one-time' -k XXXXXXXXX --placement-group skynet -g XXXXXXX
+
     
 Add in the name of the key your using, leaving off the .pem extension.
 
@@ -41,6 +52,9 @@ the spot instance price.
 
 
 Include full path to key file for FCL_KEYPATH 
+
+    # tag instances by security group you created 
+   
 
     # see if the instance came up and get its ip address
     ec2-describe-instances 
